@@ -10,6 +10,9 @@ import android.util.Log;
 import com.zidian.myopenglframe.App;
 
 import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
 
 public class ShaderHelper {
     private static final String TAG = "ShaderHelper";
@@ -22,7 +25,7 @@ public class ShaderHelper {
      * @param fragmentPath
      * @return
      */
-    public int makeProgram(String vertexPath, String fragmentPath) {
+    public static int makeProgram(String vertexPath, String fragmentPath) {
         //编译顶点着色器
         int vertex = compileVertexShader(vertexPath);
         if (vertex == 0) {
@@ -135,6 +138,23 @@ public class ShaderHelper {
             glError(1, "Could not create program");
         }
         return program;
+    }
+
+    /**
+     * 初始化buffer
+     */
+    public static FloatBuffer initBuffer(float[] points) {
+        //申请底层空间 float占4字节
+        ByteBuffer a = ByteBuffer.allocateDirect(points.length * 4);
+        //告诉字节空间按照本地字节序排序
+        a.order(ByteOrder.nativeOrder());
+        //将底层字节转换为FloatBuffer
+        FloatBuffer floatBuffer = a.asFloatBuffer();
+        //将数据从java虚拟机复制到本地内存
+        floatBuffer.put(points);
+        //将指针归0，很重要
+        floatBuffer.position(0);
+        return floatBuffer;
     }
 
 
