@@ -5,7 +5,7 @@ import android.opengl.GLSurfaceView;
 
 public abstract class BaseRenderer implements GLSurfaceView.Renderer {
     protected Context mContext;
-    protected int pragram;
+    protected int program;
     protected int type;
 
     protected abstract void with(Context context);

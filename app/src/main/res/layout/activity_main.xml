@@ -24,9 +24,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="btnOnClick"
-        android:text="图片处理"/>
+        android:text="颜色正图形"/>
     <Button
         android:id="@+id/btn_main_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="btnOnClick"
+        android:text="图片"/>
+    <Button
+        android:id="@+id/btn_main_5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="btnOnClick"

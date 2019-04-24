@@ -25,9 +25,13 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(GraphActivity.TAG, GraphActivity.TYPE_HIGH);
                 break;
             case R.id.btn_main_3:
-                intent = new Intent(MainActivity.this, PictureActivity.class);
+                intent = new Intent(MainActivity.this, GraphActivity.class);
+                intent.putExtra(GraphActivity.TAG, GraphActivity.TYPE_COLOR);
                 break;
             case R.id.btn_main_4:
+                intent = new Intent(MainActivity.this, PictureActivity.class);
+                break;
+            case R.id.btn_main_5:
 
                 break;
         }

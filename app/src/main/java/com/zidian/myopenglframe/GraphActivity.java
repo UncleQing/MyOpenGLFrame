@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import com.zidian.myopenglframe.renderer.BaseRenderer;
+import com.zidian.myopenglframe.renderer.ColorTriangleRenderer;
 import com.zidian.myopenglframe.renderer.PostiveTriangleRenderer;
 import com.zidian.myopenglframe.renderer.TriangleRenderer;
 import com.zidian.myopenglframe.view.BaseGLSurfaceView;
@@ -12,6 +13,7 @@ public class GraphActivity extends Activity {
     public static final String TAG = "graph_activtiy";
     public static final int TYPE_SIMPLE = 0;
     public static final int TYPE_HIGH = 1;
+    public static final int TYPE_COLOR = 2;
     private int type;
 
     private BaseGLSurfaceView glView_up;
@@ -33,6 +35,9 @@ public class GraphActivity extends Activity {
         if (type == TYPE_HIGH) {
             mTriangleRenderer = new PostiveTriangleRenderer();
             mRectangleRender = new PostiveTriangleRenderer();
+        }else if (type == TYPE_COLOR){
+            mTriangleRenderer = new ColorTriangleRenderer();
+            mRectangleRender = new ColorTriangleRenderer();
         }else {
             mTriangleRenderer = new TriangleRenderer();
             mRectangleRender = new TriangleRenderer();

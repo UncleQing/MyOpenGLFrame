@@ -14,8 +14,6 @@ import javax.microedition.khronos.opengles.GL10;
  * 简单三角形和矩形
  */
 public class TriangleRenderer extends BaseRenderer {
-    private Context mContext;
-    private int pragram;
     //确认路径无误，可以点进去查看
     private static final String VERT_PATH = "triangle/triangle.vert";
     private static final String FRAG_PATH = "triangle/triangle.frag";
@@ -49,7 +47,7 @@ public class TriangleRenderer extends BaseRenderer {
         GLES20.glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
 
         vertBuffer = ShaderHelper.initBuffer(pos);
-        pragram = ShaderHelper.makeProgram(VERT_PATH, FRAG_PATH);
+        program = ShaderHelper.makeProgram(VERT_PATH, FRAG_PATH);
     }
 
     @Override
@@ -68,9 +66,9 @@ public class TriangleRenderer extends BaseRenderer {
          */
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
         //将程序加入OpenGL2.0环境
-        GLES20.glUseProgram(pragram);
+        GLES20.glUseProgram(program);
         //获取顶点着色器位置索引vPosition
-        vPosition = GLES20.glGetAttribLocation(pragram, V_POSITION);
+        vPosition = GLES20.glGetAttribLocation(program, V_POSITION);
         //顶点数组使能
         GLES20.glEnableVertexAttribArray(vPosition);
         /**
@@ -87,15 +85,15 @@ public class TriangleRenderer extends BaseRenderer {
 
 
         //获取片元着色器vColor
-        vColor = GLES20.glGetUniformLocation(pragram, V_COLOR);
+        vColor = GLES20.glGetUniformLocation(program, V_COLOR);
         //绘制颜色
         GLES20.glUniform4fv(vColor, 1, colors, 0);
         if (type == TYPE_RECTANGLE){
             //绘制三角
-            GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, pos.length / PER_COMENT_CONUT);
+            GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP, 0, pos.length / PER_COMENT_CONUT);
         }else {
             //绘制矩形
-            GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP, 0, pos.length / PER_COMENT_CONUT);
+            GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, pos.length / PER_COMENT_CONUT);
         }
 
         //顶点数组逆使能
