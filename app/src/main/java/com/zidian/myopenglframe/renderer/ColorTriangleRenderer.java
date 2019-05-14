@@ -17,6 +17,7 @@ public class ColorTriangleRenderer extends BaseRenderer {
     private static final String FRAG_PATH = "triangle/color_triangle.frag";
     //每个顶点关联分量数，1、2、3、4,x\y\z\w
     private static final int PER_COMENT_CONUT = 2;
+    //R、G、B
     private static final int COLOR_COMENT_CONUT = 3;
     //形状，三角，矩形
     private int type;
